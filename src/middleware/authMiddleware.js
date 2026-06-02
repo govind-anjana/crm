@@ -10,6 +10,7 @@ export const auth = async (req, res, next) => {
       return res.status(401).json({
         success: false,
         message: "Unauthorized",
+        developer_message: "No token provided",
       });
     }
 
@@ -27,6 +28,7 @@ export const auth = async (req, res, next) => {
     return res.status(401).json({
       success: false,
       message: "Invalid Token",
+      developer_message: "Token is invalid or has expired",
     });
   }
 };
@@ -36,6 +38,7 @@ export const isAdmin = (req, res, next) => {
     return res.status(403).json({
       success: false,
       message: "Admin Access Required",
+      developer_message: "User is not an admin",
     });
   }
 
@@ -47,6 +50,7 @@ export const isCaller = (req, res, next) => {
     return res.status(403).json({
       success: false,
       message: "Caller Access Required",
+      developer_message: "User is not a caller",
     });
   }
 
